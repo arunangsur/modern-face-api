@@ -1,0 +1,20 @@
+# Use a modern, slim Python base image
+FROM python:3.11-slim
+
+# Set the working directory
+WORKDIR /code
+
+# Copy just the requirements file first
+COPY ./requirements.txt /code/requirements.txt
+
+# Install dependencies (this will be fast, no C++ compilation)
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+# Copy the rest of your application code
+COPY ./main.py /code/main.py
+
+# Expose the port
+EXPOSE 8000
+
+# The command to run your application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
