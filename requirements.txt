@@ -1,17 +1,15 @@
-# ====================================================================
-#   requirements.txt (Final version with tf-keras fix for deployment)
-# ====================================================================
+# requirements.txt (Optimized for low-memory runtime)
 
-# Web Framework and Server
 fastapi
 uvicorn[standard]
 python-multipart
 
-# Core Machine Learning Libraries
-numpy
-Pillow
-pandas
+# Pinning to a stable, CPU-only version of TensorFlow
+tensorflow-cpu==2.15.0
 
-# The DeepFace library and its new dependency
+# DeepFace and its dependencies
 deepface
-tf-keras  # <-- THIS IS THE FIX
+tf-keras
+pandas
+Pillow
+numpy
