@@ -1,14 +1,17 @@
-# requirements.txt (Final version with NumPy pinned)
+# ====================================================================
+#   requirements.txt (Final version with tf-keras fix for deployment)
+# ====================================================================
 
+# Web Framework and Server
 fastapi
 uvicorn[standard]
 python-multipart
 
-# Pin Pillow and OpenCV to known stable versions
-Pillow==10.0.1
-opencv-python==4.8.0.76
+# Core Machine Learning Libraries
+numpy
+Pillow
+pandas
 
-# CRITICAL FIX: Pin NumPy to a version BEFORE the 2.0 breaking change
-numpy<2.0
-
+# The DeepFace library and its new dependency
 deepface
+tf-keras  # <-- THIS IS THE FIX
