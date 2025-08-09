@@ -1,18 +1,8 @@
-# ====================================================================
-#   requirements.txt (Pinned versions for stable deployment)
-# ====================================================================
-
-# Web Framework and Server
-fastapi==0.104.1
-uvicorn[standard]==0.24.0.post1
-python-multipart==0.0.6
-
-# Core Libraries
-numpy==1.24.3
-Pillow==10.0.1
-pandas==1.5.3  # DeepFace sub-dependency
-
-# The DeepFace library
-# Note: We are not pinning deepface itself, allowing pip to choose the
-# best compatible version based on the other pinned libraries.
+fastapi
+uvicorn[standard]
+python-multipart
+numpy
+Pillow
+# Pinning opencv-python to a stable version
+opencv-python==4.8.0.76
 deepface
