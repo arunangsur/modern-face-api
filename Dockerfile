@@ -5,9 +5,10 @@ FROM python:3.11-slim
 WORKDIR /code
 
 # --- THE FIX IS HERE ---
-# Install the missing system library required by OpenCV
+# Install ALL missing system libraries required by OpenCV and its dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1-mesa-glx \
+    libglib2.0-0 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
