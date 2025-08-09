@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 # Copy the rest of your application code
 COPY ./main.py /code/main.py
 
-# Expose the port
-EXPOSE 8000
+# Expose the port that Render expects for its Docker runtime
+EXPOSE 10000
 
-# The command to run your application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT:-8000}"]
+# Command to run the application, hardcoding the port to 10000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "10000"]
