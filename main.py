@@ -56,7 +56,7 @@ async def register_face(user_id: str = Form(...), file: UploadFile = File(...)):
             
         # IMPORTANT: Force DeepFace to re-index its database.
         # This deletes the pickle file so it has to scan the folders again.
-        representations_path = os.path.join(DB_PATH, "representations_vgg-face.pkl")
+        representations_path = os.path.join(DB_PATH, "representations_sface.pkl")
         if os.path.exists(representations_path):
             os.remove(representations_path)
             print(f"Deleted old index file at {representations_path} to force re-indexing.")
