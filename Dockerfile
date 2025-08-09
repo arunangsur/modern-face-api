@@ -4,10 +4,17 @@ FROM python:3.11-slim
 # Set the working directory
 WORKDIR /code
 
+# --- THE FIX IS HERE ---
+# Install the missing system library required by OpenCV
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1-mesa-glx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy just the requirements file first
 COPY ./requirements.txt /code/requirements.txt
 
-# Install dependencies (this will be fast, no C++ compilation)
+# Install dependencies
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Copy the rest of your application code
