@@ -1,8 +1,14 @@
+# requirements.txt (Final version with NumPy pinned)
+
 fastapi
 uvicorn[standard]
 python-multipart
-numpy
-Pillow
-# Pinning opencv-python to a stable version
+
+# Pin Pillow and OpenCV to known stable versions
+Pillow==10.0.1
 opencv-python==4.8.0.76
+
+# CRITICAL FIX: Pin NumPy to a version BEFORE the 2.0 breaking change
+numpy<2.0
+
 deepface
