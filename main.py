@@ -25,7 +25,7 @@ print(f"✅ Database path is set to: {DB_PATH}")
 # --- 3. Pre-load a Model to Speed Up First Request (Optional but good) ---
 try:
     print("⏳ Pre-loading face recognition model...")
-    _ = DeepFace.build_model("VGG-Face")
+    _ = DeepFace.build_model("SFace")
     print("✅ Model pre-loaded successfully.")
 except Exception as e:
     print(f"🔥 Could not pre-load model: {e}")
@@ -89,7 +89,7 @@ async def identify_face(file: UploadFile = File(...)):
         dfs = DeepFace.find(
             img_path = image_np,
             db_path = DB_PATH, 
-            model_name = "VGG-Face",
+            model_name = "SFace",
             distance_metric = "cosine",
             enforce_detection = False
         )
